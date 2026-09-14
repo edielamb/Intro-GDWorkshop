@@ -1,0 +1,85 @@
+@font-face{font-family:Satoshi;src:url("fonts/Satoshi-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Satoshi;src:url("fonts/Satoshi-Italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:Satoshi;src:url("fonts/Satoshi-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:Satoshi;src:url("fonts/Satoshi-LightItalic.otf") format("opentype");font-weight:300;font-style:italic;font-display:swap}
+@font-face{font-family:Satoshi;src:url("fonts/Satoshi-BoldItalic.woff2") format("woff2");font-weight:700;font-style:italic;font-display:swap}
+:root{color-scheme:dark;--background:#1f1d20;--foreground:#e9e4dc}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--background);color:var(--foreground)}
+/* Let the browser settle on each frame and stop a fling from skipping frames. */
+html{scroll-snap-type:y mandatory}
+.frame{scroll-snap-align:start;scroll-snap-stop:always}
+body{font-family:Satoshi,sans-serif}
+h1,h2,h3,p,ul{margin:0;padding:0;font-size:inherit;font-weight:inherit}
+main{width:100%}
+/* Fit the artwork to the available browser height as well as its width. */
+.frame{position:relative;display:grid;place-items:center;width:100%;min-height:100svh;overflow:hidden}
+.frame-content{position:relative;container-type:inline-size;width:min(100%,153.8461538svh,1440px);aspect-ratio:1280 / 832;overflow:hidden}
+.placed{position:absolute}
+.landing h1{font-size:11.71875cqw;font-weight:400}
+.intro{font-size:3.75cqw;font-weight:300;font-style:italic}
+.centered{text-align:center}
+.portrait,.pupil{display:block}
+.pupil-right{transform:rotate(8.5deg)}
+.pupil-left{transform:rotate(20.39deg)}
+.gradex h2{font-size:21.484375cqw;font-weight:700;font-style:italic;text-align:center}
+.project-image{overflow:hidden}
+.resonant-image{position:absolute;width:126%;height:100.01%;left:-11.11%;top:-.01%;max-width:none}
+.specimen{object-fit:cover}
+.project-title{font-size:2.8125cqw;white-space:nowrap}
+.project-medium{font-size:1.875cqw;font-style:italic}
+.project-description{font-size:1.25cqw;color:#fff}
+.project-description p+p{margin-top:1.75cqw}
+.tight{letter-spacing:-.025cqw}
+.interest-list{list-style:none}
+.interest{font-size:1.875cqw;font-weight:300;text-align:center;white-space:nowrap}
+.mind-map-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.interests .interest,.interests h2{z-index:1}
+.interest span{display:inline-block;background:var(--background)}
+.interests.is-floating .interest{will-change:transform}
+
+/* Keep project copy readable instead of shrinking it with the Figma canvas. */
+.projects{padding:32px clamp(24px,3.5vw,56px)}
+.projects .frame-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,4vw,60px);width:min(100%,1360px);aspect-ratio:auto;overflow:visible}
+.projects article{min-width:0}
+.projects .placed{position:relative;left:auto!important;top:auto!important;width:100%!important;height:auto!important}
+.projects .project-image,.projects .specimen{display:block;height:clamp(220px,47svh,430px)!important;margin-bottom:26px}
+.projects .resonant-image{width:100%;height:100%;left:0;top:0;object-fit:cover}
+.projects .specimen{object-fit:cover;background:var(--background)}
+.projects .project-title{font-size:clamp(26px,2.5vw,36px);line-height:1.25}
+.projects .project-medium{font-size:clamp(18px,1.7vw,24px);line-height:1.4;margin-top:4px}
+.projects .project-description{max-width:540px;font-size:16px;line-height:1.45;margin-top:24px}
+.projects .project-description p+p{margin-top:16px}
+.projects .tight{letter-spacing:-.02em}
+@media(max-width:700px){
+  .projects{padding:40px 24px}
+  .projects .frame-content{grid-template-columns:1fr;gap:48px}
+  .projects .project-image,.projects .specimen{height:auto!important;aspect-ratio:547 / 389}
+}
+
+/* Move the whole content layer so the mind-map words and lines stay aligned. */
+@media(prefers-reduced-motion:no-preference){
+  .frame.reveal-ready > .frame-content{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 750ms ease-out,transform 750ms cubic-bezier(.22,1,.36,1);
+  }
+  .frame.reveal-ready.is-visible > .frame-content{opacity:1;transform:translateY(0)}
+}
+
+.hobby-cycle{position:absolute;left:31.25cqw;top:10cqw;width:37.5cqw;height:37.5cqw}
+.hobby-cycle img{display:block;width:100%;height:100%;object-fit:contain}
+.hobby-cycle img[hidden]{display:none}
+
+.gradex-letter{display:inline-block}
+@media(prefers-reduced-motion:no-preference){
+  .gradex.letters-floating .gradex-letter{
+    animation:gradex-drift var(--drift-duration) ease-in-out .85s infinite;
+  }
+  @keyframes gradex-drift{
+    0%,100%{transform:translate(0,0) rotate(0deg)}
+    25%{transform:translate(var(--drift-x),var(--drift-y)) rotate(var(--drift-angle))}
+    50%{transform:translate(calc(var(--drift-x) * -.6),calc(var(--drift-y) * -.75)) rotate(calc(var(--drift-angle) * -.6))}
+    75%{transform:translate(calc(var(--drift-x) * -.9),calc(var(--drift-y) * .5)) rotate(calc(var(--drift-angle) * .5))}
+  }
+}
