@@ -112,11 +112,11 @@ main {
 .pupil-left {
   transform: rotate(20.39deg);
 }
-.gradex h2 {
-  font-size: 21.484375cqw;
-  font-weight: 700;
-  font-style: italic;
-  text-align: center;
+.course-question {
+  left: 5cqw;
+  top: 50%;
+  width: 90cqw;
+  transform: translateY(-50%);
 }
 .project-image {
   overflow: hidden;
@@ -284,37 +284,4 @@ main {
 }
 .hobby-cycle img[hidden] {
   display: none;
-}
-
-.gradex-letter {
-  display: inline-block;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .gradex.letters-floating .gradex-letter {
-    animation: gradex-drift var(--drift-duration) ease-in-out 0.85s infinite;
-  }
-  @keyframes gradex-drift {
-    0%,
-    100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-      transform: translate(var(--drift-x), var(--drift-y))
-        rotate(var(--drift-angle));
-    }
-    50% {
-      transform: translate(
-          calc(var(--drift-x) * -0.6),
-          calc(var(--drift-y) * -0.75)
-        )
-        rotate(calc(var(--drift-angle) * -0.6));
-    }
-    75% {
-      transform: translate(
-          calc(var(--drift-x) * -0.9),
-          calc(var(--drift-y) * 0.5)
-        )
-        rotate(calc(var(--drift-angle) * 0.5));
-    }
-  }
 }
